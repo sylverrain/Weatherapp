@@ -95,9 +95,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             TextView speed=findViewById(R.id.windSpeed);
             speed.setText(wind.getString("speed"));
 
-            TextView humidity=findViewById(R.id.humidityValue);
-            humidity.setText(weather.getString("humidity"));
-
             TextView sunrise=findViewById(R.id.timeSunrise);
             String timeSunrise=sys.getString("sunrise");
             Locale myLocale=new Locale("ru", "RU");
