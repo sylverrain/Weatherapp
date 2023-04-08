@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JSONObject resultJSON=new JSONObject(output);
             JSONObject weather=resultJSON.getJSONObject("main");
             JSONObject sys=resultJSON.getJSONObject("sys");
+            JSONObject wind=resultJSON.getJSONObject("wind");
 
             TextView temp=findViewById(R.id.tempValue);
             String temp_K=weather.getString("temp");
@@ -85,7 +86,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             temp.setText(temp_C_string);
 
             TextView pressure=findViewById(R.id.pressureValue);
-            pressure.setText(weather.getString("pressure"));
+            String pressure_hPa=weather.getString("pressure");
+            float pressure_mm=Float.parseFloat(pressure_hPa);
+            pressure_mm=pressure_mm*(float)0.750064;
+            String pressure_mm_string=Float.toString(pressure_mm);
+            pressure.setText(pressure_mm_string);
+
+            TextView speed=findViewById(R.id.windSpeed);
+            speed.setText(wind.getString("speed"));
+
+            TextView humidity=findViewById(R.id.humidityValue);
+            humidity.setText(weather.getString("humidity"));
 
             TextView sunrise=findViewById(R.id.timeSunrise);
             String timeSunrise=sys.getString("sunrise");
